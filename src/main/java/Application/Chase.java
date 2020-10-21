@@ -2,19 +2,18 @@ package Application;
 
 public class Chase extends BankBase {
     private double balance = 0;
+
     public Chase(long accountNumber, long routingNumber) throws Exception {
-        super(accountNumber, routingNumber);
-        addToAccountStorage(this);
+        super(accountNumber,routingNumber);
+        addToAllBankRecords(this);
     }
 
-    @Override
     public double getBalance() {
         return balance;
     }
 
-    @Override
     public void deposit(double amount) {
-        if(amount < 0 || amount > 100000) {
+        if(amount < 0 || amount > 10000) {
             System.err.println("Invalid amount, can not be deposited");
         }
         else {
@@ -22,9 +21,8 @@ public class Chase extends BankBase {
         }
     }
 
-    @Override
     public void withDraw(double amount) {
-        if(amount < 0 || amount > 10000) {
+        if(amount < 0 || amount > 1000) {
             System.err.println("Invalid amount, can not be withdrawn");
         }
         else {
@@ -36,7 +34,6 @@ public class Chase extends BankBase {
             }
         }
     }
-
 
 
 

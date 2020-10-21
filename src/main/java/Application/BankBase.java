@@ -7,37 +7,42 @@ public abstract class BankBase implements Bank {
     private long accountNumber;
     private long routingNumber;
 
-    public static Set<BankBase> accountStorage = new HashSet<>();
+    public static Set<BankBase> allBankRecords = new HashSet<>();
 
-    //to set account without getter and setters we need to create constructor
-//Long  --> String
+
     public BankBase(long accountNumber, long routingNumber) throws Exception {
-        if (Long.toString(accountNumber).length() == 12) {
-            this.accountNumber = accountNumber;
-        } else {
-            throw new Exception("Account Number should be 12 digits long");
+        if (Long.toString(accountNumber).length() != 12){
+            throw  new Exception("Account number must be 12");
         }
-        if (Long.toString(routingNumber).length() == 9) {
+        else if(Long.toString(routingNumber).length() != 9){
+            throw  new Exception("Routing number must be 9");
+        }
+        else {
+            this.accountNumber = accountNumber;
             this.routingNumber = routingNumber;
-        } else {
-            throw new Exception("Account Number should be 9 digits long");
         }
     }
 
-    public static void addToAccountStorage(BankBase account) throws Exception {
-        if (accountStorage.size() != 0) {
-            for (BankBase bb : accountStorage) {
-                if (bb.accountNumber == account.accountNumber) {
-                    throw new Exception("Account number " + account.accountNumber + " already exists");
-                } else if (bb.routingNumber == account.routingNumber) {
-                    throw new Exception("Routing number " + account.routingNumber + "already exists");
+
+    /**
+     * Adds newly created bank to static list after checking for duplicate account and routing numbers
+     * @param bank
+     * @throws Exception
+     */
+    public static void addToAllBankRecords(BankBase bank) throws Exception {
+        if (!allBankRecords.isEmpty()) {
+            for (BankBase b : allBankRecords) {
+                if (b.routingNumber == bank.routingNumber) {
+                    throw new Exception("Routing number " + bank.routingNumber + " already exists");
+                } else if (b.accountNumber == bank.accountNumber) {
+                    throw new Exception("Account number " + bank.accountNumber + " already exists");
                 } else {
-                    accountStorage.add(account);
+                    allBankRecords.add(bank);
                 }
             }
         } else {
-            accountStorage.add(account);
+            allBankRecords.add(bank);
         }
-
     }
+
 }

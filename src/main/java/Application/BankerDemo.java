@@ -2,7 +2,7 @@ package Application;
 
 public class BankerDemo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
 
         //polymorphism can be used in initializing an object when you decide which object to initialize at runtime;
@@ -71,6 +71,27 @@ public class BankerDemo {
 //        System.out.println(alexChaseAccount.getBalance());
 //        System.out.println(johnBankOfAmericaAccount.getBalance());
 //
+
+
+        Chase alexChaseAccount = new Chase(123456789101l,123456789);
+        alexChaseAccount.deposit(1000);
+
+        Chase belaChaseAccount = new Chase(123456789101l,123456789);
+        belaChaseAccount.deposit(2000);
+
+
+        transferFunds(alexChaseAccount, belaChaseAccount, 800);
+        System.out.println(alexChaseAccount.getBalance());
+        System.out.println(belaChaseAccount.getBalance());
+
+
+        BankOfAmerica johnBankOfAmericaAccount = new BankOfAmerica(12345l,12312424l);
+        johnBankOfAmericaAccount.deposit(2000);//2200
+
+        System.out.println();
+        transferFunds(johnBankOfAmericaAccount, alexChaseAccount, 800);
+        System.out.println(alexChaseAccount.getBalance());
+        System.out.println(johnBankOfAmericaAccount.getBalance());
 
     }
 

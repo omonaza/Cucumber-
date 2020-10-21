@@ -25,12 +25,12 @@ public class BankGroupProjectTest {
     public void invalidAccountNumberException() {
         String message = "";
         try {
-            Chase chase2 = new Chase(123456789123L, 123456789L);
+            Chase chase2 = new Chase(12345678912376L, 123456789L);
         } catch (Exception e) {
             message = e.getMessage();
             System.out.println(e.getMessage());
         }
-        Assert.assertEquals("Must have 12 digits", message);
+        Assert.assertEquals("Account number must be 12", message);
     }
 }
 // Homework
