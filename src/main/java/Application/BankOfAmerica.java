@@ -2,7 +2,7 @@ package Application;
 
 
 
-class BankOfAmerica extends BankBase {
+public class BankOfAmerica extends BankBase {
     private double balance = 200;
 
     public BankOfAmerica(long accountNumber, long routingNumber) throws Exception {

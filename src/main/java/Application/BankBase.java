@@ -45,4 +45,20 @@ public abstract class BankBase implements Bank {
         }
     }
 
+    public long getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(long accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public long getRoutingNumber() {
+        return routingNumber;
+    }
+
+    public void setRoutingNumber(long routingNumber) {
+        this.routingNumber = routingNumber;
+    }
+
 }
